@@ -1155,6 +1155,37 @@ Transform:
   m_Father: {fileID: 1953964159}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1393556037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1393556038}
+  m_Layer: 0
+  m_Name: Pool Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1393556038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393556037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6992755, y: -0.5292386, z: -2.3206868}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480205819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,11 +1634,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f6f5bd098d6ff4981390183790dfd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastDongle: {fileID: 0}
   donglePrefab: {fileID: 5141928161570504517, guid: d122f06b3e9c27749aa7a22365d9ac99, type: 3}
   dongleGroup: {fileID: 703544814}
+  donglePool: []
   effectPrefab: {fileID: 7603288581698892804, guid: afe5237f7310123408eb2e71f1df8209, type: 3}
   effectGroup: {fileID: 293894208}
+  effectPool: []
+  poolSize: 3
+  poolCursor: 0
+  lastDongle: {fileID: 0}
   bgmPlayer: {fileID: 332655942}
   sfxPlayer:
   - {fileID: 1974393695}
