@@ -1,31 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
-{    
+{
+    [Header("----------[ Core ]")]
+    public int score;
+    public int maxLevel;
+    public bool isOver;
+
+    [Header("----------[ Object Pooling ]")]
     public GameObject donglePrefab;
     public Transform dongleGroup;
     public List<Dongle> donglePool;
-
     public GameObject effectPrefab;
     public Transform effectGroup;
     public List<ParticleSystem> effectPool;
-
     [Range(1, 30)]
     public int poolSize;
     public int poolCursor;
     public Dongle lastDongle;
 
+    [Header("----------[ Audio ]")]
     public AudioSource bgmPlayer;
     public AudioSource[] sfxPlayer;
     public AudioClip[] sfxClip;
     public enum Sfx { LevelUp, Next, Attach, Button, Over };
     int sfxCursor;
 
-    public int score;
-    public int maxLevel;
-    public bool isOver;
+    [Header("----------[ UI ]")]
+    public Text scoreText;
+    public Text maxScoreText;
+
+
 
     void Awake()
     {
@@ -37,6 +45,14 @@ public class GameManager : MonoBehaviour
         {
             MakeDongle();
         }
+
+        if (!PlayerPrefs.HasKey("MaxScore"))
+        {
+            PlayerPrefs.SetInt("MaxScore", 0);
+        }
+            
+
+        maxScoreText.text = PlayerPrefs.GetInt("MaxScore").ToString();
     }    
 
     void Start()
@@ -150,6 +166,8 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        int maxScore = Mathf.Max(score, PlayerPrefs.GetInt("MaxScore"));
+        PlayerPrefs.SetInt("MaxScore", maxScore);
         SfxPlay(Sfx.Over);
     }
 
@@ -176,5 +194,10 @@ public class GameManager : MonoBehaviour
 
         sfxPlayer[sfxCursor].Play();
         sfxCursor = (sfxCursor + 1) % sfxPlayer.Length;
+    }
+
+    void LateUpdate()
+    {
+        scoreText.text = score.ToString();
     }
 }
